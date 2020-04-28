@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="btn-group">
+        <button class="mb-120" id="insert">插入</button>
+        <button class="mb-120" id="search">查找</button>
+        <button class="mb-120" id="delete">删除</button>
+        <button class="mb-120" id="update">修改</button>
+        <button class="mb-120" id="output">输出</button>
+        <button class="mb-120" id="quite">退出</button>
+    </div>
+    <div style="display: none;" id="insert-mask" class="mask">
+        <div class="insert-container mask-container">
+            <div>
+                <label for="name">姓名</label>
+                <input type="text" id="name"></div>
+            <div>
+                <label for="id">学号</label>
+                <input type="text" placeholder="学号为10位数字" id="id"></div>
+            <div>
+                <label for="id">出生日期</label>
+                <input type="text" placeholder="yyyy/mm/dd" id="birDate"></div>
+            <div>
+                <div>
+                    <input type="radio" checked name="gender" value="true">男
+                    <input type="radio" name="gender" value="false">女</div>
+                <div class="bottom-btn-group">
+                    <button id="insert-confirm">确认</button>
+                    <button id="insert-cancel">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="display: none;" id="output-mask" class="mask">
+        <div class="mask-container output-container">
+            <div id="output-close" class="close"><svg t="1587873426548" class="icon" viewBox="0 0 1024 1024"
+                    version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1888" width="36" height="36">
+                    <path
+                        d="M519.02036023 459.47959989L221.8941505 162.35411435a37.07885742 37.07885742 0 1 0-52.45354772 52.40502656l297.12476134 297.15010821L169.44060278 809.05863314a37.07885742 37.07885742 0 1 0 52.42964924 52.42892505l297.15010821-297.12476136 297.15010822 297.12476136a37.07885742 37.07885742 0 1 0 52.42892504-52.40430237l-297.12476135-297.1740067 297.12476135-297.12548553a37.07885742 37.07885742 0 1 0-52.42892504-52.42964924L519.04498291 459.47959989z"
+                        p-id="1889" fill="#707070"></path>
+                </svg></div>
+            <table id="table" class="table2_1"></table>
+        </div>
+    </div>
+    <div style="display: none;" id="update-mask" class="mask">
+        <div class="update-container mask-container">
+            <div>
+                <label for="name">姓名</label>
+                <input type="text" id="update-name"></div>
+            <div>
+                <label for="id">学号</label>
+                <input type="text" placeholder="学号为10位数字" id="update-id"></div>
+            <div>
+                <label for="id">出生日期</label>
+                <input type="text" placeholder="yyyy/mm/dd" id="update-birDate"></div>
+            <div>
+                <input type="radio" checked name="update-gender" value="true">男
+                <input type="radio" name="update-gender" value="false">女</div>
+            <div class="bottom-btn-group">
+                <button id="update-confirm">确认</button>
+                <button id="update-cancel">取消</button>
+            </div>
+        </div>
+    </div>
+    <script crossorigin="anonymous" integrity="sha384-LVoNJ6yst/aLxKvxwp6s2GAabqPczfWh6xzm38S/YtjUyZ+3aTKOnD/OJVGYLZDl"
+        src="https://lib.baomitu.com/jquery/3.5.0/jquery.min.js"></script>
+    <script src="./function.js"></script>
+</body>
+
+</html>

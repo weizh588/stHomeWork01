@@ -1,0 +1,4 @@
+2019-03-13 20:42:26.013 [main] DEBUG c.bluemsun.dao.split.DynamicDataSourceInterceptor - 设置方法[com.bluemsun.dao.DayDao.insertJobDao] use [master] Strategy, SqlCommanType [INSERT]..
+2019-03-13 20:42:26.048 [main] DEBUG com.bluemsun.dao.split.DynamicDataSourceHolder - 所使用的数据源为：master
+2019-03-13 20:42:26.984 [main] DEBUG com.bluemsun.dao.DayDao.insertJobDao - ==>  Preparing: INSERT INTO tb_job(job_name,day_id) VALUES ( ?,? ) , ( ?,? ) 
+2019-03-13 20:42:27.193 [main] DEBUG com.bluemsun.dao.DayDao.insertJobDao - ==> Parameters: job1(String), 1(Integer), job2(String), 1(Integer)

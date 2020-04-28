@@ -1,0 +1,148 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.entry-container {
+    margin: 80px auto;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2), -4px -4px 4px rgba(0, 0, 0, 0.2);
+    padding: 20px 40px;
+    width: 500px;
+    border-radius: 12px;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    -ms-border-radius: 12px;
+    -o-border-radius: 12px;
+    text-align: center;
+    color: #333;
+}
+
+.entry-container .title {
+    text-align: center;
+    margin-bottom: 120px;
+}
+
+.mb-120 {
+    margin-bottom: 120px;
+}
+
+button {
+    outline: none;
+    padding: 12px 32px;
+    border: 1px solid #333;
+    background-color: #fff;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+}
+
+.entry-container .stu-info {
+    text-align: right;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.btn-group {
+    margin: 120px auto;
+    width: 400px;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2), -4px -4px 4px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    padding-top: 120px;
+}
+
+.mask {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.mask .mask-container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 60px 60px 0;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
+}
+
+.mask .update-container>div,
+.mask .insert-container>div {
+    margin-bottom: 60px;
+}
+
+.mask .insert-container>div input[type=text],
+.mask .update-container>div input[type=text] {
+    width: 200px;
+    height: 40px;
+    outline: none;
+    border: 1px solid #333;
+    line-height: 40px;
+    padding-left: 20px;
+    font-size: 16px;
+    color: #333;
+}
+
+.mask .insert-container>div input[type=radio],
+.mask .update-container>div input[type=radio] {
+    margin-left: 20px;
+}
+
+.bottom-btn-group {
+    text-align: center;
+}
+
+.table2_1 {
+    width: 800px;
+}
+
+.table2_1 table {
+	width:100%;
+	margin:15px 0
+}
+.table2_1 th {
+	background-color:#93DAFF;
+	color:#000000
+}
+.table2_1,.table2_1 th,.table2_1 td
+{
+	font-size:0.95em;
+	text-align:center;
+	padding:4px;
+	border:1px solid #c1e9fe;
+	border-collapse:collapse
+}
+.table2_1 tr:nth-child(odd){
+	background-color:#dbf2fe;
+}
+.table2_1 tr:nth-child(even){
+	background-color:#fdfdfd;
+}
+
+.mask .output-container {
+    padding-bottom: 60px;
+    max-height: 480px;
+    overflow: auto;
+}
+
+.mask .output-container .close {
+    cursor: pointer;
+    position: absolute;
+    right: 16px;
+    top: 16px;
+}
