@@ -215,7 +215,7 @@ public class StudentManager {
         moudelMap.put("msg", "退出成功");
         return moudelMap;
     }
-// 判断学号溢出
+// 判断学号溢出 溢出的话返回1
 public int reverse2(int x) {
     double ans=0;
     int flag=1;
