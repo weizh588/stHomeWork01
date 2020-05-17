@@ -2,6 +2,8 @@ package com.bluemsun.web;
 
 import com.bluemsun.entity.Student;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,8 +20,9 @@ import java.util.*;
 @RequestMapping("/student")
 public class StudentManager {
 
-     private Student student1;
+     private Student student1; // 编号12  类属性初始化
      private List<Student> list1;
+    private static Logger logger = LoggerFactory.getLogger(StudentManager.class);//编号59 日志处理
 
     /**
      * 进入程序
@@ -36,14 +39,13 @@ public class StudentManager {
         request.getSession().setAttribute("studentList",studentList);
         moudelMap.put("state", 1);
         moudelMap.put("msg", "进入成功");
-
         return moudelMap;
     }
 
     /**
      * 插入学生
      * @param request
-     * @return
+     * @return moudelMap
      */
     @RequestMapping(value = "/insertStudent", method = RequestMethod.POST)
     @ResponseBody
@@ -71,6 +73,7 @@ public class StudentManager {
             moudelMap.put("state", -1);
             moudelMap.put("errMsg", "您输入的数据不合法");
             e.printStackTrace();
+            logger.error(e.getMessage());
             return moudelMap;
         }
         for (int i = 0; i <list.size() ; i++) {
@@ -84,14 +87,14 @@ public class StudentManager {
         request.getSession().setAttribute("studentList",list);
         moudelMap.put("state", 1);
         moudelMap.put("msg","添加成功");
-
+        list=null;// 编号60 局部变量使用完置
         return moudelMap;
     }
 
     /**
      * 显示所有学生
      * @param request
-     * @return
+     * @return moudelMap
      */
     @RequestMapping(value = "/showAllStudents", method = RequestMethod.GET)
     @ResponseBody
@@ -108,6 +111,7 @@ public class StudentManager {
             moudelMap.put("state", -1);
             moudelMap.put("errMsg", "暂无学生信息");
         }
+        list=null;//编号60 局部变量使用完置空
 
         return moudelMap;
     }
@@ -115,7 +119,7 @@ public class StudentManager {
     /**
      * 删除学生
      * @param request
-     * @return
+     * @return moudelMap
      */
     @RequestMapping(value = "/deleteStudent", method = RequestMethod.GET)
     @ResponseBody
@@ -123,14 +127,20 @@ public class StudentManager {
         Map<String, Object> moudelMap = new HashMap<String, Object>();
         List<Student> list=( List<Student>)request.getSession().getAttribute("studentList");
          String id= request.getParameter("id");
-         int index=0;
-         for(int i=0;i<list.size();i++){
-             if(list.get(i).getId()==Integer.parseInt(id)){
-                 index=i;
-                 break;
+         try {
+             int index=0;
+             for(int i=0;i<list.size();i++){
+                 if(list.get(i).getId()==Integer.parseInt(id)){
+                     index=i;
+                     break;
+                 }else{
+
+                 }
              }
+             list.remove(index);
+         }catch (Exception ex){
+             logger.error(ex.getMessage());//编号59 错误日志记录
          }
-         list.remove(index);
         request.getSession().setAttribute("studentList",list);
         moudelMap.put("state", 1);
         moudelMap.put("msg","删除成功");
@@ -141,7 +151,7 @@ public class StudentManager {
     /**
      * 按姓名查询某个学生
      * @param request
-     * @return
+     * @return moudelMap
      */
     @RequestMapping(value = "/searchByName", method = RequestMethod.GET)
     @ResponseBody
@@ -162,14 +172,14 @@ public class StudentManager {
             moudelMap.put("state", -1);
             moudelMap.put("errMsg", "未找到该学生");
         }
-
+        students=null;// 编号29 局部变量使用后置空
         return moudelMap;
     }
 
     /**
      * 修改学生
      * @param request
-     * @return
+     * @return moudelMap
      */
     @RequestMapping(value = "/updateStudent", method = RequestMethod.POST)
     @ResponseBody
@@ -184,6 +194,7 @@ public class StudentManager {
         } catch (IOException e) {
             moudelMap.put("state", -1);
             moudelMap.put("errMsg", e.getMessage());
+            logger.error(e.getMessage());
             e.printStackTrace();
         }
         for (int i = 0; i <list.size() ; i++) {
@@ -193,18 +204,22 @@ public class StudentManager {
                 list.get(i).setName(student.getName());
                 list.get(i).setGender(student.isGender());
                 break;
-            }
+            }else{
+
+            } //编号80
         }
         request.getSession().setAttribute("studentList",list);
         moudelMap.put("state", 1);
         moudelMap.put("msg","修改成功");
+        list=null;//使用完的对象置空。 特别是集合对象
         return moudelMap;
+
     }
 
     /**
      * 退出程序
      * @param request
-     * @return
+     * @return moudelMap
      */
     @RequestMapping(value = "/quite", method = RequestMethod.GET)
     @ResponseBody
@@ -215,26 +230,26 @@ public class StudentManager {
         moudelMap.put("msg", "退出成功");
         return moudelMap;
     }
-// 判断学号溢出 溢出的话返回1
-public int reverse2(int x) {
-    double ans=0;
-    int flag=1;
-    if(x<0){
-        flag=-1;
-    }
-    x=x*flag;
-    while(x>0) {
-        ans = 10 * ans + x % 10;
-        x = x / 10;
-    }
-    if(ans>Integer.MAX_VALUE){//判断是否溢出
-        System.out.println(ans);
-        return 0;
-    }
-    else
-        return (int)(flag*ans);
 
-}
 
+    // 判断学号溢出 溢出的话返回1   编号20反复进行了int返回值判断是否定义了函数来处理？
+    public int reverse2(int x) {
+        double ans=0;
+        int flag=1;
+        if(x<0) //18 单个条件语句去掉{ }
+            flag=-1;
+        x=x*flag;
+        while(x>0) {
+            ans = 10 * ans + x % 10;
+            x = x / 10;
+        }
+        if(ans>Integer.MAX_VALUE){//判断是否溢出
+            System.out.println(ans);
+            return 0;
+        }
+        else
+            return (int)(flag*ans);
+
+    }
 }
 
